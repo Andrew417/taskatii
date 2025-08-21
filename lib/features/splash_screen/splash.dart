@@ -25,28 +25,31 @@ class _SplashState extends State<Splash> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Lottie.asset('assets/images/logo.json'),
-            Text(
-              'Taskati',
-              style: TextStyle(
-                fontWeight: FontWeight.w600,
-                fontSize: 32,
-                color: AppColors.black,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Lottie.asset('assets/images/logo.json'),
+              //Image.asset('assets/images/accountPng.png'),
+              Text(
+                'Taskati',
+                style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 32,
+                  color: AppColors.black,
+                ),
               ),
-            ),
-            SizedBox(height: 10),
-            Text(
-              'It\'s Time to Get Organized',
-              style: TextStyle(
-                fontWeight: FontWeight.w400,
-                fontSize: 18,
-                color: AppColors.grey,
+              SizedBox(height: 10),
+              Text(
+                'It\'s Time to Get Organized',
+                style: TextStyle(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 18,
+                  color: AppColors.grey,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
