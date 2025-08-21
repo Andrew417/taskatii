@@ -15,7 +15,7 @@ class _SplashState extends State<Splash> {
   @override
   void initState() {
     Future.delayed(const Duration(seconds: 3), () {
-      pushWithReplacement(context, UploadImage());
+      pushWithReplacement(context, UploadScreen());
     });
     super.initState();
   }

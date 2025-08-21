@@ -1,58 +1,96 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:taskati/components/buttons/main_btn.dart';
+import 'package:taskati/core/extentions/dailogs.dart';
 import 'package:taskati/core/utils/app_colors.dart';
 
-class UploadImage extends StatelessWidget {
-  const UploadImage({super.key});
+class UploadScreen extends StatefulWidget {
+  const UploadScreen({super.key});
 
+  @override
+  State<UploadScreen> createState() => _UploadScreenState();
+}
+
+class _UploadScreenState extends State<UploadScreen> {
+  String? path;
+  var nameController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: AppColors.semiWhite,
         actions: [
           TextButton(
-            onPressed: () {},
-            child: Text('Done', style: TextStyle(color: AppColors.blue)),
+            onPressed: () {
+              if (path != null && nameController.text.isEmpty) {
+                showErrorDialog(context, 'Please enter your name');
+              } else if (path == null && nameController.text.isNotEmpty) {
+                showErrorDialog(context, 'Please upload your profile image');
+              } else {
+                showErrorDialog(
+                  context,
+                  'Please enter your name and upload your profile image',
+                );
+              }
+            },
+            child: Text('Done'),
           ),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(18),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            CircleAvatar(
-              backgroundColor: AppColors.blue,
-              radius: 90,
-              child: SvgPicture.asset(
-                'assets/images/accountSvg.svg',
-                width: 30,
-                height: 30,
-              ),
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CircleAvatar(
+                  radius: 80,
+                  backgroundColor: AppColors.blue,
+                  backgroundImage: path != null
+                      ? FileImage(File(path ?? ''))
+                      : AssetImage('assets/images/accountPng.png'),
+                ),
+                SizedBox(height: 25),
+                MainBtn(
+                  width: 250,
+                  text: 'Upload From Camera',
+                  onPressed: () {
+                    uploadImage(true);
+                  },
+                ),
+                SizedBox(height: 10),
+                MainBtn(
+                  width: 250,
+                  text: 'Upload From Gallery',
+                  onPressed: () async {
+                    uploadImage(false);
+                  },
+                ),
+                SizedBox(height: 25),
+                Divider(),
+                SizedBox(height: 25),
+                TextFormField(
+                  controller: nameController,
+                  decoration: InputDecoration(hintText: 'Enter your name'),
+                ),
+              ],
             ),
-            SizedBox(height: 25),
-            MainBtn(text: 'Upload From Camera', onPressed: () {}),
-            SizedBox(height: 8),
-            MainBtn(text: 'Upload From Gallery', onPressed: () {}),
-            SizedBox(height: 15),
-            Divider(),
-            SizedBox(height: 15),
-            TextFormField(
-              decoration: InputDecoration(hintText: 'Enter your name'),
-              keyboardType: TextInputType.emailAddress,
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'name cannot be empty';
-                }
-                return null;
-              },
-            ),
-          ],
+          ),
         ),
       ),
     );
+  }
+
+  uploadImage(bool isCamera) async {
+    var picker = await ImagePicker().pickImage(
+      source: isCamera ? ImageSource.camera : ImageSource.gallery,
+    );
+    if (picker != null) {
+      setState(() {
+        path = picker.path;
+      });
+    }
   }
 }
