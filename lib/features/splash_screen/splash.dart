@@ -30,7 +30,6 @@ class _SplashState extends State<Splash> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Lottie.asset('assets/images/logo.json'),
-              //Image.asset('assets/images/accountPng.png'),
               Text(
                 'Taskati',
                 style: TextStyle(

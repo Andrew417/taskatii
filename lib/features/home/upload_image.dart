@@ -20,6 +20,7 @@ class _UploadScreenState extends State<UploadScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: AppColors.semiWhite,
         actions: [
           TextButton(
             onPressed: () {
