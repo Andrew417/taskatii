@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:taskati/core/services/local_helper.dart';
 import 'package:taskati/core/utils/app_colors.dart';
 import 'package:taskati/features/splash_screen/splash.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+  await LocalHelper.init();
   runApp(const MyApp());
 }
+
+// void main() async {
+//   runApp(const MyApp());
+// }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -15,7 +24,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.white,
-        // fontFamily: 'Poppins',
+        fontFamily: 'Poppins',
         inputDecorationTheme: InputDecorationTheme(
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(color: AppColors.blue),

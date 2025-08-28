@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:taskati/core/extentions/navigation.dart';
 import 'package:taskati/core/utils/app_colors.dart';
-import 'package:taskati/features/home/upload_image.dart';
+import 'package:taskati/features/Upload/upload_image.dart';
 
 class Splash extends StatefulWidget {
   const Splash({super.key});

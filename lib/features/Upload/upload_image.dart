@@ -4,7 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:taskati/components/buttons/main_btn.dart';
 import 'package:taskati/core/extentions/dailogs.dart';
+import 'package:taskati/core/extentions/navigation.dart';
+import 'package:taskati/core/services/local_helper.dart';
 import 'package:taskati/core/utils/app_colors.dart';
+import 'package:taskati/features/home/page/homepage.dart';
 
 class UploadScreen extends StatefulWidget {
   const UploadScreen({super.key});
@@ -24,7 +27,12 @@ class _UploadScreenState extends State<UploadScreen> {
         actions: [
           TextButton(
             onPressed: () {
-              if (path != null && nameController.text.isEmpty) {
+              if (path != null && nameController.text.isNotEmpty) {
+                LocalHelper.cacheData(LocalHelper.isUpload, true);
+                LocalHelper.cacheData(LocalHelper.kImage, path);
+                LocalHelper.cacheData(LocalHelper.kName, nameController.text);
+                pushWithReplacement(context, HomePage());
+              } else if (path != null && nameController.text.isEmpty) {
                 showErrorDialog(context, 'Please enter your name');
               } else if (path == null && nameController.text.isNotEmpty) {
                 showErrorDialog(context, 'Please upload your profile image');
