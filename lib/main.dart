@@ -5,7 +5,6 @@ import 'package:taskati/core/utils/app_colors.dart';
 import 'package:taskati/features/splash_screen/splash.dart';
 
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   await LocalHelper.init();
   runApp(const MyApp());

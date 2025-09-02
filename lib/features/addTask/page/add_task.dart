@@ -26,7 +26,6 @@ class _AddEditTaskScreenState extends State<AddEditTaskScreen> {
   var formKey = GlobalKey<FormState>();
 
   @override
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -42,7 +41,7 @@ class _AddEditTaskScreenState extends State<AddEditTaskScreen> {
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: MainBtn(
             height: 55,
-            text: 'buton',
+            text: 'button',
             onPressed: () {
               Navigator.pop(context);
             },
@@ -151,6 +150,7 @@ class _AddEditTaskScreenState extends State<AddEditTaskScreen> {
           onTap: () async {
             var selectedDate = await showDatePicker(
               context: context,
+
               firstDate: DateTime.now(),
               initialDate: DateTime.now(),
               lastDate: DateTime.now().add(Duration(days: 365 * 3)),
