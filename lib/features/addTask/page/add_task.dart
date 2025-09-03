@@ -3,12 +3,16 @@ import 'package:gap/gap.dart';
 import 'package:intl/intl.dart';
 import 'package:taskati/components/buttons/main_btn.dart';
 import 'package:taskati/core/constants/task_colors.dart';
+import 'package:taskati/core/models/task_model.dart';
+import 'package:taskati/core/services/local_helper.dart';
 import 'package:taskati/core/utils/app_colors.dart';
 import 'package:taskati/core/utils/text_styles.dart';
 import 'package:taskati/features/addTask/widgets/TimeFieldSelection.dart';
 
 class AddEditTaskScreen extends StatefulWidget {
-  const AddEditTaskScreen({super.key});
+  const AddEditTaskScreen({super.key, this.taskModel});
+
+  final TaskModel? taskModel;
 
   @override
   State<AddEditTaskScreen> createState() => _AddEditTaskScreenState();
@@ -26,6 +30,23 @@ class _AddEditTaskScreenState extends State<AddEditTaskScreen> {
   var formKey = GlobalKey<FormState>();
 
   @override
+  void initState() {
+    super.initState();
+    titleController.text = widget.taskModel?.title ?? '';
+    descriptionController.text = widget.taskModel?.description ?? '';
+    dateController.text =
+        widget.taskModel?.date ??
+        DateFormat("yyyy-MM-dd").format(DateTime.now());
+    startTimeController.text =
+        widget.taskModel?.startTime ??
+        DateFormat("hh:mm a").format(DateTime.now());
+    endTimeController.text =
+        widget.taskModel?.endTime ??
+        DateFormat("hh:mm a").format(DateTime.now());
+    selectedColor = widget.taskModel?.color ?? 0;
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -41,9 +62,31 @@ class _AddEditTaskScreenState extends State<AddEditTaskScreen> {
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: MainBtn(
             height: 55,
-            text: 'button',
+            text: widget.taskModel != null ? 'Update Task' : 'Create Task',
+            
             onPressed: () {
-              Navigator.pop(context);
+              if (formKey.currentState!.validate() == true) {
+                String id = '';
+                if (widget.taskModel != null) {
+                  id = widget.taskModel!.id;
+                } else {
+                  id = DateTime.now().millisecondsSinceEpoch.toString();
+                }
+                LocalHelper.cacheTask(
+                  id,
+                  TaskModel(
+                    id: id,
+                    title: titleController.text,
+                    description: descriptionController.text,
+                    date: dateController.text,
+                    startTime: startTimeController.text,
+                    endTime: endTimeController.text,
+                    color: selectedColor,
+                    isCompleted: false,
+                  ),
+                );
+                Navigator.pop(context);
+              }
             },
           ),
         ),

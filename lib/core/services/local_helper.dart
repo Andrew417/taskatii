@@ -10,6 +10,8 @@ class LocalHelper {
   static String kUserBox = 'user';
   static String kTaskBox = 'task';
 
+  static String kIsDark = 'Dark'; 
+
   static String kName = 'name';
   static String kImage = 'image';
   static String isUpload = 'isUpload';

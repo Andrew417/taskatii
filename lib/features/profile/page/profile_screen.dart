@@ -20,9 +20,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
   var nameController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    var isDark = LocalHelper.getData(LocalHelper.kIsDark) ?? false;
     return Scaffold(
       appBar: AppBar(
-        actions: [IconButton(onPressed: () {}, icon: Icon(Icons.light_mode))],
+        actions: [
+          IconButton(
+            onPressed: () {
+              LocalHelper.cacheData(LocalHelper.kIsDark, !isDark);
+              setState(() {});
+            },
+            icon: Icon(isDark ? Icons.light_mode : Icons.dark_mode),
+          ),
+        ],
       ),
       body: Center(
         child: Padding(
