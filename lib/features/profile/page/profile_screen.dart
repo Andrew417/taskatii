@@ -103,6 +103,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     onPressed: () {
                       showModalBottomSheet(
                         context: context,
+                        backgroundColor: Theme.of(
+                          context,
+                        ).scaffoldBackgroundColor,
                         shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.vertical(
                             top: Radius.circular(20),
@@ -134,7 +137,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         },
                       );
                     },
-                    icon: Icon(Icons.edit),
+                    icon: Icon(Icons.edit, color: AppColors.blue),
                   ),
                 ],
               ),

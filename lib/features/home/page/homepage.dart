@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:taskati/features/home/widgets/date_selection.dart';
 import 'package:taskati/features/home/widgets/home_header.dart';
+import 'package:taskati/features/home/widgets/task_builder.dart';
 import 'package:taskati/features/home/widgets/today_header.dart';
 
 class HomePage extends StatelessWidget {

@@ -65,7 +65,7 @@ class AppThemes {
       hourMinuteColor: AppColors.black,
     ),
     inputDecorationTheme: InputDecorationTheme(
-      hintStyle: TextStyles.getBody(color: AppColors.grey),
+      hintStyle: TextStyles.getBody(color: AppColors.black),
       enabledBorder: OutlineInputBorder(
         borderSide: BorderSide(color: AppColors.blue),
         borderRadius: BorderRadius.circular(10),

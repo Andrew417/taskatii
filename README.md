@@ -1,16 +1,66 @@
-# taskati
+# 📌 Taskati – Task Management App  
 
-A new Flutter project.
+**Taskati** is a Flutter-powered task management application built to boost productivity with a clean, intuitive, and efficient design.  
+This app was created as part of the **DEPI Cross-Platform Training** program.  
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## ✨ Key Features  
 
-A few resources to get you started if this is your first Flutter project:
+### 📝 Task Organization  
+- Create, update, delete, and mark tasks as done.  
+- Assign colors to tasks for better categorization.  
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### 📅 Smart Scheduling  
+- Built-in date picker for setting deadlines.  
+- Start and end time options for tasks.  
+- Daily timeline view for clear task tracking.  
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### 👤 Profile & Preferences  
+- Edit username.  
+- Update profile picture (via camera or gallery).  
+- Secure logout functionality.  
+
+### 🌙 Theme Customization  
+- Switch between light and dark modes.  
+- Persistent theme setting saved locally.  
+
+### 💾 Offline Storage  
+- Data saved locally with **Hive** for seamless offline use.  
+
+### 🎬 User Experience  
+- Animated splash screen and signup process.  
+- Engaging Lottie animations for empty states.  
+- Responsive UI designed for both mobile and desktop.  
+
+---
+## 📸 Screenshots  
+
+<p align="center">
+  <img src="assets/screenshots/3.png" width="30%" />
+  <img src="assets/screenshots/2.png" width="30%" />
+  <img src="assets/screenshots/1.png" width="30%" />
+</p>
+<p align="center">
+  <img src="assets/screenshots/4.png" width="30%" />
+  <img src="assets/screenshots/5.png" width="30%" />
+  <img src="assets/screenshots/6.png" width="30%" />
+</p>
+<p align="center">
+  <img src="assets/screenshots/7.png" width="30%" />
+  <img src="assets/screenshots/8.png" width="30%" />
+  <img src="assets/screenshots/9.png" width="30%" />
+</p>
+
+---
+
+## 🔌 Plugins Used  
+- **Hive & hive_flutter** – Local NoSQL database  
+- **Image Picker** – Capture or select images from gallery/camera  
+- **Intl** – Internationalization & date formatting  
+- **Lottie** – Display Lottie animations  
+- **Gap** – Simple spacing widgets  
+- **File Selector** – Native file picker for desktop  
+- **Flutter SVG** – Render SVG images  
+
+---
